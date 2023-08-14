@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+    yaade:
+      build: .
+      container_name: yaade
+      image: 'esperotech/yaade:latest'
+      restart: always
+      ports:
+        - '9339:9339'
+      environment:
+        - YAADE_ADMIN_USERNAME=admin
+      volumes:
+        - 'yaade_data:/app/data'
+
+volumes:
+  yaade_data: {}
+
