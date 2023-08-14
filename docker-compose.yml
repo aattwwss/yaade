@@ -1,22 +1,17 @@
 version: '3.3'
 services:
     yaade:
-        restart: always
-        ports:
-            - '9339:9339'
-        environment:
-            - YAADE_ADMIN_USERNAME=admin
-        volumes:
-            - 'yaade_data:/app/data'
-        container_name: yaade
-        image: 'esperotech/yaade:latest'
-        networks:
-            - nginx-proxy-manager
+      build: .
+      container_name: yaade
+      image: 'esperotech/yaade:latest'
+      restart: always
+      ports:
+        - '9339:9339'
+      environment:
+        - YAADE_ADMIN_USERNAME=admin
+      volumes:
+        - 'yaade_data:/app/data'
 
 volumes:
   yaade_data: {}
-
-networks:
-  nginx-proxy-manager:
-    external: true
 
